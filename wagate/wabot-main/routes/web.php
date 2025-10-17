@@ -33,3 +33,8 @@ Route::post('/send', [MessageController::class, 'send'])->name('message.send');
 Route::post('/webhook', [WebhookController::class, 'handle'])->name('webhook.handle');
 
 require __DIR__.'/auth.php';
+
+// =================================================================
+// RUTE API BARU UNTUK MENGIRIM PESAN DARI APLIKASI KRISNA
+// =================================================================
+Route::post('/api/send-message', [MessageController::class, 'sendMessageApi']);

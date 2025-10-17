@@ -8,7 +8,7 @@ return [
     |
     | This value is the token that get from WABLAS
     */
-    'token' => env('WABLAS_TOKEN', null),
+    'token' => env('9fh0ZS1bjWwn6fD016NZhBl41go4HqGVLzwc0kn5l6qIlLCKd6LrCOQ', null),
 
     /*
     |--------------------------------------------------------------------------
@@ -18,7 +18,7 @@ return [
     | This values is the URL subdomain from WABLAS.
     | If your domain is https://bandung.wablas.com, only input "bandung" as the URL
     */
-    'server' => env('WABLAS_URL', 'jogja'),
+    'server' => env('WABLAS_URL', 'surabaya'),
 
     /*
     |--------------------------------------------------------------------------
