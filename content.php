@@ -1,5 +1,10 @@
 <?php
 
+// === MULAI SESSION DI SINI ===
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 include_once 'app/config.php';
 //$conn=mysqli_connect("localhost","root","","pandawa");
 // Check connection
@@ -8,6 +13,7 @@ include_once 'app/config.php';
 echo "Failed to connect to MySQL: " . mysqli_connect_error();
 echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }*/
+
 
 //HALAMAN HOME (DASHBOARD)
 if ($_GET['module']=='home'){

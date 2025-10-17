@@ -10,22 +10,20 @@ else{
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-<title>KRISNA</title>
-<link rel="shortcut icon" href="images/pdw-admin.ico">
+<title>KRISNA - ADMIN</title>
+<link rel="shortcut icon" href="../images/pdw-admin.ico">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<link rel="stylesheet" href="images/Envision.css" type="text/css" />
+<link rel="stylesheet" href="../images/Envision.css" type="text/css" /> 
 </head>
 <body>
 <div id="wrap">
   <div id="header">
-   <!--<h1 id="logo-text">PANDAWA</h1>
-    <h2 id="slogan">PENYIMPANAN DOKUMEN KEIMIGRASIAN WNA</h2>-->
-	<p><div align="left"><img src="images/krisna_logo.png" height="75"></div></p>
+	<p><div align="left"><img src="../images/krisna_logo.png" height="75"></div></p>
   </div>
   <div  id="menu">
     <ul>
       <li id="current"><a href="#">
-		<a href=view.php?module=passwordadmin>SELAMAT DATANG ADMINISTRATOR DI APLIKASI KRISNA</a>
+		<a href="view.php?module=passwordadmin">SELAMAT DATANG ADMINISTRATOR DI APLIKASI KRISNA</a>
 	  </li>
     </ul>
   </div>
@@ -33,16 +31,18 @@ else{
     <div id="sidebar">
       <h1>Menu</h1>
       <ul class="sidemenu">
-        <li><a href=view.php?module=home>HOME</a></li>
-        <li><a href=view.php?module=manajemenuser>MANAJEMEN USER</a></li>
-        <li><a href=view.php?module=manajemenrak>MANAJEMEN RAK</a></li>
-		<li><a href=view.php?module=manajemenwa>MANAJEMEN PESAN</a></li>
-		<li><a href=view.php?module=log>LOG ACTIVITY</a></li>
-		<li><a href=logout.php>LOGOUT</a></li>
+        <li><a href="view.php?module=home">HOME</a></li>
+        <li><a href="view.php?module=manajemenuser">MANAJEMEN USER</a></li>
+        <li><a href="view.php?module=manajemenrak">MANAJEMEN RAK</a></li>
+		<li><a href="view.php?module=manajemenwa">MANAJEMEN PESAN</a></li>
+        
+        <li><a href="view.php?module=wa_reminder">PENGINGAT WA</a></li>
+        <li><a href="view.php?module=log">LOG ACTIVITY</a></li>
+		<li><a href="logout.php">LOGOUT</a></li>
       </ul>
     </div>
     <div id="main"> <a name="TemplateInfo"></a>
-      <?php include "content.php"; ?>
+      <?php include "content.php"; // Ini adalah cara yang benar untuk memuat konten ?>
     </div>
   </div>
   <div id="footer">

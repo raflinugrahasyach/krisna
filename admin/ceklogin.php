@@ -12,8 +12,13 @@ if ($ketemu > 0){
   
 	$_SESSION['username']=$r['username'];
 	$_SESSION['passuser']=$r['password'];
+    
+    // ================== PERBAIKAN PENTING ==================
+    // Menambahkan session 'nip' untuk admin agar halaman lain tidak error.
+    $_SESSION['nip'] = $r['username']; 
+    // ===============================================
 	
-		header('location:view.php?module=home');
+	header('location:view.php?module=home');
 }
 else{
   echo"<div align='center'><br><br><br><h2>Username/Password Salah <br> Silakan Coba Lagi</h2><br>

@@ -6,6 +6,7 @@ include_once '../app/config.php';
 /*if (mysqli_connect_errno())
 {
 echo "Failed to connect to MySQL: " . mysqli_connect_error();
+echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }*/
 
 //HALAMAN HOME (DASHBOARD)
@@ -13,15 +14,17 @@ if ($_GET['module']=='home'){
 	echo "<h1>DASHBOARD</h1>
 			<h2>JUMLAH PASPOR YANG DIARSIPKAN 7 HARI TERAKHIR</h2>";
 	
-	
-	echo"<iframe src='app/chart1.php' height='400px' width='700px'></iframe>
+	// Path ke chart diperbaiki
+	echo"<iframe src='../app/chart1.php' height='400px' width='700px' style='border:none;'></iframe>
 			<br><br><hr color=#265180><br>
-	 
+	
 			<h2>JUMLAH PASPOR YANG DISERAHKAN DALAM 7 HARI TERAKHIR</h2>
-			<iframe src='app/chart2.php' height='400px' width='700px'></iframe>";
-	 
-	}
+			<iframe src='../app/chart2.php' height='400px' width='700px' style='border:none;'></iframe>";
+}
 
+elseif ($_GET['module']=='wa_reminder'){
+    include 'wa_reminder.php';
+}
 
 // HALAMAN MANAJEMEN USER
 elseif ($_GET['module']=='manajemenuser'){

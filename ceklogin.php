@@ -1,36 +1,35 @@
 <?php
-
-//$pass=($_POST[password]);
+session_start();
 include_once 'app/config.php';
-date_default_timezone_set("Asia/SIngapore");
-$tanggal=date('Y-m-d H:i:s');
-$pass=md5($_POST['password']);
-//$con=mysqli_connect("localhost","root","","krisna");
-$login=mysqli_query($conn,"SELECT * FROM user WHERE nip='$_POST[nip]' AND password='$pass' AND status='Aktif'");
-$ketemu=mysqli_num_rows($login);
-$r=mysqli_fetch_array($login);
 
-// Apabila username dan password ditemukan
-if ($ketemu > 0){
-	session_start();
-  
-	$_SESSION['nip']=$r['nip'];
-	$_SESSION['passuser']=$r['password'];
-	
-	//INPUT LOG LOGIN
-	$sql = "INSERT INTO log	(tanggal,
-							 nip,
-							 aktifitas)
-					VALUES	('$tanggal',
-							 '$_SESSION[nip]',
-							 'Berhasil Login')";
-	
-	if (mysqli_query($conn, $sql)) {
-		header('location:view.php?module=home');
-		}
-}
-else{
-  echo"<div align='center'><br><br><br><h2>Username/Password Salah, atau Status User Anda Tidak Aktif <br> Silakan Coba Lagi</h2><br>
-		<input type=button value=Kembali style='height:35px; width:100px' onclick=self.history.back()>";
+$username = $_POST['username'];
+$password = md5($_POST['password']);
+
+// Query untuk admin
+$login_admin = mysqli_query($conn, "SELECT * FROM admin WHERE username='$username' AND password='$password'");
+$cek_admin = mysqli_num_rows($login_admin);
+
+// Query untuk user
+$login_user = mysqli_query($conn, "SELECT * FROM user WHERE nip='$username' AND password='$password' AND status='Aktif'");
+$cek_user = mysqli_num_rows($login_user);
+
+if ($cek_admin > 0) {
+    $_SESSION['username'] = $username;
+    $_SESSION['status'] = "login_admin";
+    header("location:admin/content.php?module=home");
+
+} elseif ($cek_user > 0) {
+    // === BAGIAN PENTING YANG DIPERBAIKI ===
+    // Ambil data NIP dari hasil query
+    $user_data = mysqli_fetch_assoc($login_user);
+    
+    // Simpan username (NIP) dan NIP ke dalam session
+    $_SESSION['username'] = $username;
+    $_SESSION['nip'] = $user_data['nip']; // <-- BARIS INI DITAMBAHKAN
+    $_SESSION['status'] = "login_user";
+    header("location:content.php?module=home");
+
+} else {
+    header("location:index.php?pesan=gagal");
 }
 ?>
